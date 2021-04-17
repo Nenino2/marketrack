@@ -1,1 +1,1 @@
-const app = firebase.app();
+console.log('HELLO WORLD')
