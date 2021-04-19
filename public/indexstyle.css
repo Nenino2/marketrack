@@ -113,7 +113,6 @@ img {
 /* NAVIGATION BAR*/
 .nav {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	height: 9rem;
 	width: 100%;
@@ -131,7 +130,6 @@ img {
 .nav__logowritten {
 	display: flex;
 	align-items: center;
-	width: 100%;
 	padding: 2rem;
 	font-size: 3rem;
 }
@@ -144,6 +142,7 @@ img {
 	display: flex;
 	align-items: center;
 	list-style: none;
+	margin-left: auto;
 }
 
 .nav__item {
