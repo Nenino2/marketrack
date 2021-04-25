@@ -76,8 +76,8 @@ async function scrape (url) {
 }
 */
 
-async function scrape (url) {
-  const result = await fetch(url);
+async function scrape (path) {
+  const result = await fetch('http://localhost:8010/proxy' + path);
   const html = await result.text();
   const parser = new DOMParser ();
   const page = parser.parseFromString(html, "text/html");
@@ -87,7 +87,7 @@ async function scrape (url) {
 
 
 async function runCode() {
-  const data = await scrape("http://localhost:8010/proxy/v3.10/index.php?action=Details&site=GEN&conid=446620977");
+  const data = await scrape("/v3.10/index.php?action=Details&site=GEN&conid=446620977");
   console.log(data);
 }
 
