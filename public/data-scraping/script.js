@@ -1,6 +1,6 @@
 "use strict"
 async function scrape () {
-  const result = await fetch ("https://localhost:8010/proxy/v3.10/index.php?action=Details&site=GEN&conid=446620977");
+  const result = await fetch ("http://localhost:8010/proxy/v3.10/index.php?action=Details&site=GEN&conid=446620977");
   const html = await result.text();
   const parser = new DOMParser ();
   const page = parser.parseFromString(html, "text/html");
