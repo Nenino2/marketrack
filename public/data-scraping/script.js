@@ -122,13 +122,18 @@ const urls= [
 "/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
 
 async function runCode() {
-  const data = await scrape("/v3.10/index.php?action=Details&site=GEN&conid=446620977");
-  console.log(data);
+  let i = 0;
+  let iMax = urls.length - 1;
 
-  for (let url of urls) {
-    const data = await scrape(url)
-    console.log(data)
-  }
+  const timer = setInterval(async () => {
+    const data = await scrape(urls[i]);
+    console.log(data);
+    if (i < iMax) {
+      i++;
+    } else {
+      clearInterval(timer)
+    }
+  }, 1000);
 }
 
 runCode();
