@@ -91,7 +91,7 @@ async function runCode() {
   for (let url of urls) {
     let data = await scrape(url)
     if (data.length === 0) {
-      confirm('RISOLVI IL CAPTHA')
+      confirm('RISOLVI IL CAPTHA: https://contract.ibkr.info/v3.10/index.php')
       data = await scrape(url);
     }
     console.log(data)
