@@ -85,10 +85,22 @@ async function scrape (path) {
   return elements
 }
 
+const urls= ["/v3.10/index.php?action=Details&site=GEN&conid=446620977","/v3.10/index.php?action=Details&site=GEN&conid=446620894", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620891", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620921", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620930", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=478462211", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620956", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620995", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620950", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620881", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620884", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620990", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=478462266", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=478462226", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620947", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620975", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620935", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620965", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620915", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=478462254", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620898", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620941", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620998", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620903", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620953", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620904", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620987", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446621004", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620980", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620960", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620970", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620909", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446621001", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
 
 async function runCode() {
   const data = await scrape("/v3.10/index.php?action=Details&site=GEN&conid=446620977");
   console.log(data);
+
+  for (let url of urls) {
+    const data = await scrape(url)
+    console.log(data)
+  }
+
+
+  for (let i=0; i<urls.length; i++){
+    const data = await scrape(url[i]);
+    console.log(data);
+  }
 }
 
 runCode();
