@@ -122,18 +122,14 @@ const urls= [
 "/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
 
 async function runCode() {
-  let i = 0;
-  let iMax = urls.length - 1;
-
-  const timer = setInterval(async () => {
-    const data = await scrape(urls[i]);
-    console.log(data);
-    if (i < iMax) {
-      i++;
-    } else {
-      clearInterval(timer)
+  for (let url of urls) {
+    let data = await scrape(url)
+    if (data.length === 0) {
+      confirm('RISOLVI IL CAPTHA: https://contract.ibkr.info/v3.10/index.php')
+      data = await scrape(url);
     }
-  }, 1000);
+    console.log(data)
+  }
 }
 
 runCode();
