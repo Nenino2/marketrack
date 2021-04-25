@@ -53,7 +53,7 @@ async function scrape () {
     Contract:Contract,
     Country:Country,
     Currency:Currency,
-    IsinID:IsiniID,
+    IsinID:IsinID,
     Exchange_Website:Exchange_Website,
     FutureType:FutureType,
     LastDate:LastDate,
