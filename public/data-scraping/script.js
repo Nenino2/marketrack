@@ -76,8 +76,8 @@ async function scrape (url) {
 }
 */
 
-async function scrape (url) {
-  const result = await fetch(url);
+async function scrape (path) {
+  const result = await fetch('http://localhost:8010/proxy' + path);
   const html = await result.text();
   const parser = new DOMParser ();
   const page = parser.parseFromString(html, "text/html");
@@ -85,7 +85,7 @@ async function scrape (url) {
   return elements
 }
 
-const url= ["/v3.10/index.php?action=Details&site=GEN&conid=446620977","/v3.10/index.php?action=Details&site=GEN&conid=446620894", 
+const urls= ["/v3.10/index.php?action=Details&site=GEN&conid=446620977","/v3.10/index.php?action=Details&site=GEN&conid=446620894", 
 "/v3.10/index.php?action=Details&site=GEN&conid=446620891", 
 "/v3.10/index.php?action=Details&site=GEN&conid=446620921", 
 "/v3.10/index.php?action=Details&site=GEN&conid=446620930", 
@@ -120,9 +120,12 @@ const url= ["/v3.10/index.php?action=Details&site=GEN&conid=446620977","/v3.10/i
 "/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
 
 async function runCode() {
-  for (let i=0; i<url.length; i++){
-    const data = await scrape(url[i]);
-    console.log(data);
+  const data = await scrape("/v3.10/index.php?action=Details&site=GEN&conid=446620977");
+  console.log(data);
+
+  for (let url of urls) {
+    const data = await scrape(url)
+    console.log(data)
   }
 }
 
