@@ -95,12 +95,6 @@ async function runCode() {
     const data = await scrape(url)
     console.log(data)
   }
-
-
-  for (let i=0; i<urls.length; i++){
-    const data = await scrape(url[i]);
-    console.log(data);
-  }
 }
 
 runCode();
