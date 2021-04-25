@@ -1,4 +1,5 @@
 "use strict"
+/*
 async function scrape (url) {
   const result = await fetch(url);
   const html = await result.text();
@@ -72,6 +73,16 @@ async function scrape (url) {
     Saturday:Saturday,
   }
   return data;
+}
+*/
+
+async function scrape (url) {
+  const result = await fetch(url);
+  const html = await result.text();
+  const parser = new DOMParser ();
+  const page = parser.parseFromString(html, "text/html");
+  const elements = Array.from(page.querySelectorAll('#contractSpecs > table:nth-child(2) > tbody > tr > th')).map(el => [el.innerText, el.nextElementSibling ? el.nextElementSibling.innerText : null])
+  return elements
 }
 
 
