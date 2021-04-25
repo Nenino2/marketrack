@@ -81,7 +81,7 @@ async function scrape (url) {
   const html = await result.text();
   const parser = new DOMParser ();
   const page = parser.parseFromString(html, "text/html");
-  const elements = Array.from(page.querySelectorAll('#contractSpecs > table:nth-child(2) > tbody > tr > th')).map(el => [el.innerText, el.nextElementSibling ? el.nextElementSibling.innerText : null])
+  const elements = Array.from(page.querySelectorAll('#contractSpecs > table > tbody > tr > th')).map(el => [el.innerText, el.nextElementSibling ? el.nextElementSibling.innerText : null])
   return elements
 }
 
