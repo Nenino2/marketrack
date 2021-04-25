@@ -85,7 +85,9 @@ async function scrape (path) {
   return elements
 }
 
-const urls= ["/v3.10/index.php?action=Details&site=GEN&conid=446620977","/v3.10/index.php?action=Details&site=GEN&conid=446620894", 
+const urls= [
+"/v3.10/index.php?action=Details&site=GEN&conid=446620977",
+"/v3.10/index.php?action=Details&site=GEN&conid=446620894", 
 "/v3.10/index.php?action=Details&site=GEN&conid=446620891", 
 "/v3.10/index.php?action=Details&site=GEN&conid=446620921", 
 "/v3.10/index.php?action=Details&site=GEN&conid=446620930", 
