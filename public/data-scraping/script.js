@@ -88,13 +88,18 @@ async function scrape (path) {
 const urls= ["/v3.10/index.php?action=Details&site=GEN&conid=446620977","/v3.10/index.php?action=Details&site=GEN&conid=446620894", "/v3.10/index.php?action=Details&site=GEN&conid=446620891", "/v3.10/index.php?action=Details&site=GEN&conid=446620921", "/v3.10/index.php?action=Details&site=GEN&conid=446620930", "/v3.10/index.php?action=Details&site=GEN&conid=478462211", "/v3.10/index.php?action=Details&site=GEN&conid=446620956", "/v3.10/index.php?action=Details&site=GEN&conid=446620995", "/v3.10/index.php?action=Details&site=GEN&conid=446620950", "/v3.10/index.php?action=Details&site=GEN&conid=446620881", "/v3.10/index.php?action=Details&site=GEN&conid=446620884", "/v3.10/index.php?action=Details&site=GEN&conid=446620990", "/v3.10/index.php?action=Details&site=GEN&conid=478462266", "/v3.10/index.php?action=Details&site=GEN&conid=478462226", "/v3.10/index.php?action=Details&site=GEN&conid=446620947", "/v3.10/index.php?action=Details&site=GEN&conid=446620975", "/v3.10/index.php?action=Details&site=GEN&conid=446620935", "/v3.10/index.php?action=Details&site=GEN&conid=446620965", "/v3.10/index.php?action=Details&site=GEN&conid=446620915", "/v3.10/index.php?action=Details&site=GEN&conid=478462254", "/v3.10/index.php?action=Details&site=GEN&conid=446620898", "/v3.10/index.php?action=Details&site=GEN&conid=446620941", "/v3.10/index.php?action=Details&site=GEN&conid=446620998", "/v3.10/index.php?action=Details&site=GEN&conid=446620903", "/v3.10/index.php?action=Details&site=GEN&conid=446620953", "/v3.10/index.php?action=Details&site=GEN&conid=446620904", "/v3.10/index.php?action=Details&site=GEN&conid=446620987", "/v3.10/index.php?action=Details&site=GEN&conid=446621004", "/v3.10/index.php?action=Details&site=GEN&conid=446620980", "/v3.10/index.php?action=Details&site=GEN&conid=446620960", "/v3.10/index.php?action=Details&site=GEN&conid=446620970", "/v3.10/index.php?action=Details&site=GEN&conid=446620909", "/v3.10/index.php?action=Details&site=GEN&conid=446621001", "/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
 
 async function runCode() {
-  const data = await scrape("/v3.10/index.php?action=Details&site=GEN&conid=446620977");
-  console.log(data);
+  let i = 0;
+  let iMax = urls.length - 1;
 
-  for (let url of urls) {
-    const data = await scrape(url)
-    console.log(data)
-  }
+  const timer = setInterval(async () => {
+    const data = await scrape(urls[i]);
+    console.log(data);
+    if (i < iMax) {
+      i++;
+    } else {
+      clearInterval(timer)
+    }
+  }, 1000);
 }
 
 runCode();
