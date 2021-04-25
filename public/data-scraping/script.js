@@ -85,7 +85,39 @@ async function scrape (url) {
   return elements
 }
 
-const url= ["http://localhost:8010/proxy/v3.10/index.php?action=Details&site=GEN&conid=446620977","https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620894", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620891", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620921", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620930", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=478462211", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620956", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620995", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620950", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620881", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620884", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620990", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=478462266", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=478462226", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620947", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620975", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620935", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620965", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620915", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=478462254", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620898", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620941", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620998", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620903", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620953", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620904", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620987", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446621004", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620980", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620960", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620970", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620909", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446621001", "https://contract.ibkr.info/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
+const url= ["/v3.10/index.php?action=Details&site=GEN&conid=446620977","/v3.10/index.php?action=Details&site=GEN&conid=446620894", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620891", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620921", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620930", 
+"/v3.10/index.php?action=Details&site=GEN&conid=478462211", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620956", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620995", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620950", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620881", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620884", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620990", 
+"/v3.10/index.php?action=Details&site=GEN&conid=478462266", 
+"/v3.10/index.php?action=Details&site=GEN&conid=478462226", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620947", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620975", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620935", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620965", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620915", 
+"/v3.10/index.php?action=Details&site=GEN&conid=478462254", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620898", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620941", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620998", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620903", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620953", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620904", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620987", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446621004", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620980", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620960", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620970", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620909", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446621001", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
 
 async function runCode() {
   for (let i=0; i<url.length; i++){
