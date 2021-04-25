@@ -74,3 +74,5 @@ async function scrape () {
 
   console.log(data);
 }
+
+scrape()
