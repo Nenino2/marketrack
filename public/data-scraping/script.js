@@ -1,6 +1,6 @@
 "use strict"
-async function scrape () {
-  const result = await fetch ("http://localhost:8010/proxy/v3.10/index.php?action=Details&site=GEN&conid=446620977");
+async function scrape (url) {
+  const result = await fetch(url);
   const html = await result.text();
   const parser = new DOMParser ();
   const page = parser.parseFromString(html, "text/html");
@@ -71,8 +71,13 @@ async function scrape () {
     Friday:Friday,
     Saturday:Saturday,
   }
+  return data;
+}
 
+
+async function runCode() {
+  const data = await scrape("http://localhost:8010/proxy/v3.10/index.php?action=Details&site=GEN&conid=446620977");
   console.log(data);
 }
 
-scrape()
+runCode();
