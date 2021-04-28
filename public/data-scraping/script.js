@@ -76,24 +76,31 @@ async function scrape (url) {
 }
 */
 
-async function scrape (path) {
+// lcp --proxyUrl https://www.borsaitaliana.it
+const borsaItalianaSelector = '#fullcontainer > main > section > div > article > div > div > table > tbody > tr > td:nth-child(1)';
+
+// lcp --proxyUrl https://contract.ibkr.info
+const contactIbrkSelector = '#contractSpecs > table > tbody > tr > th';
+
+async function scrape (path, selector) {
   const result = await fetch('http://localhost:8010/proxy' + path);
   const html = await result.text();
   const parser = new DOMParser ();
   const page = parser.parseFromString(html, "text/html");
-  const elements = Array.from(page.querySelectorAll('#contractSpecs > table > tbody > tr > th')).map(el => [el.innerText, el.nextElementSibling ? el.nextElementSibling.innerText : null])
+  const elements = Array.from(page.querySelectorAll(selector)).map(el => [el.innerText.trim(), el.nextElementSibling ? el.nextElementSibling.innerText.trim() : null])
   return elements
 }
 
-const urls= ["/v3.10/index.php?action=Details&site=GEN&conid=446620977","/v3.10/index.php?action=Details&site=GEN&conid=446620894", "/v3.10/index.php?action=Details&site=GEN&conid=446620891", "/v3.10/index.php?action=Details&site=GEN&conid=446620921", "/v3.10/index.php?action=Details&site=GEN&conid=446620930", "/v3.10/index.php?action=Details&site=GEN&conid=478462211", "/v3.10/index.php?action=Details&site=GEN&conid=446620956", "/v3.10/index.php?action=Details&site=GEN&conid=446620995", "/v3.10/index.php?action=Details&site=GEN&conid=446620950", "/v3.10/index.php?action=Details&site=GEN&conid=446620881", "/v3.10/index.php?action=Details&site=GEN&conid=446620884", "/v3.10/index.php?action=Details&site=GEN&conid=446620990", "/v3.10/index.php?action=Details&site=GEN&conid=478462266", "/v3.10/index.php?action=Details&site=GEN&conid=478462226", "/v3.10/index.php?action=Details&site=GEN&conid=446620947", "/v3.10/index.php?action=Details&site=GEN&conid=446620975", "/v3.10/index.php?action=Details&site=GEN&conid=446620935", "/v3.10/index.php?action=Details&site=GEN&conid=446620965", "/v3.10/index.php?action=Details&site=GEN&conid=446620915", "/v3.10/index.php?action=Details&site=GEN&conid=478462254", "/v3.10/index.php?action=Details&site=GEN&conid=446620898", "/v3.10/index.php?action=Details&site=GEN&conid=446620941", "/v3.10/index.php?action=Details&site=GEN&conid=446620998", "/v3.10/index.php?action=Details&site=GEN&conid=446620903", "/v3.10/index.php?action=Details&site=GEN&conid=446620953", "/v3.10/index.php?action=Details&site=GEN&conid=446620904", "/v3.10/index.php?action=Details&site=GEN&conid=446620987", "/v3.10/index.php?action=Details&site=GEN&conid=446621004", "/v3.10/index.php?action=Details&site=GEN&conid=446620980", "/v3.10/index.php?action=Details&site=GEN&conid=446620960", "/v3.10/index.php?action=Details&site=GEN&conid=446620970", "/v3.10/index.php?action=Details&site=GEN&conid=446620909", "/v3.10/index.php?action=Details&site=GEN&conid=446621001", "/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
+// const urls= ["/v3.10/index.php?action=Details&site=GEN&conid=446620977","/v3.10/index.php?action=Details&site=GEN&conid=446620894", "/v3.10/index.php?action=Details&site=GEN&conid=446620891", "/v3.10/index.php?action=Details&site=GEN&conid=446620921", "/v3.10/index.php?action=Details&site=GEN&conid=446620930", "/v3.10/index.php?action=Details&site=GEN&conid=478462211", "/v3.10/index.php?action=Details&site=GEN&conid=446620956", "/v3.10/index.php?action=Details&site=GEN&conid=446620995", "/v3.10/index.php?action=Details&site=GEN&conid=446620950", "/v3.10/index.php?action=Details&site=GEN&conid=446620881", "/v3.10/index.php?action=Details&site=GEN&conid=446620884", "/v3.10/index.php?action=Details&site=GEN&conid=446620990", "/v3.10/index.php?action=Details&site=GEN&conid=478462266", "/v3.10/index.php?action=Details&site=GEN&conid=478462226", "/v3.10/index.php?action=Details&site=GEN&conid=446620947", "/v3.10/index.php?action=Details&site=GEN&conid=446620975", "/v3.10/index.php?action=Details&site=GEN&conid=446620935", "/v3.10/index.php?action=Details&site=GEN&conid=446620965", "/v3.10/index.php?action=Details&site=GEN&conid=446620915", "/v3.10/index.php?action=Details&site=GEN&conid=478462254", "/v3.10/index.php?action=Details&site=GEN&conid=446620898", "/v3.10/index.php?action=Details&site=GEN&conid=446620941", "/v3.10/index.php?action=Details&site=GEN&conid=446620998", "/v3.10/index.php?action=Details&site=GEN&conid=446620903", "/v3.10/index.php?action=Details&site=GEN&conid=446620953", "/v3.10/index.php?action=Details&site=GEN&conid=446620904", "/v3.10/index.php?action=Details&site=GEN&conid=446620987", "/v3.10/index.php?action=Details&site=GEN&conid=446621004", "/v3.10/index.php?action=Details&site=GEN&conid=446620980", "/v3.10/index.php?action=Details&site=GEN&conid=446620960", "/v3.10/index.php?action=Details&site=GEN&conid=446620970", "/v3.10/index.php?action=Details&site=GEN&conid=446620909", "/v3.10/index.php?action=Details&site=GEN&conid=446621001", "/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
+const urls = ['/borsa/azioni/aim-italia/dati-completi.html?isin=IT0005439861&lang=it', '/borsa/derivati/ftse-mib-futures/dati-completi.html?isin=IT0017178531&lang=it'];
 
 async function runCode() {
   for (let url of urls) {
-    let data = await scrape(url)
-    if (data.length === 0) {
-      confirm('RISOLVI IL CAPTHA: https://contract.ibkr.info/v3.10/index.php')
-      data = await scrape(url);
-    }
+    let data = await scrape(url, borsaItalianaSelector);
+    // if (data.length === 0) {
+    //   confirm('RISOLVI IL CAPTHA: https://contract.ibkr.info/v3.10/index.php')
+    //   data = await scrape(url);
+    // }
     console.log(data)
   }
 }
