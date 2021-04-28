@@ -76,6 +76,122 @@ async function scrape (url) {
 }
 */
 
+/* 
+const urls= ["/v3.10/index.php?action=Details&site=GEN&conid=446620977","/v3.10/index.php?action=Details&site=GEN&conid=446620894", "/v3.10/index.php?action=Details&site=GEN&conid=446620891", "/v3.10/index.php?action=Details&site=GEN&conid=446620921", "/v3.10/index.php?action=Details&site=GEN&conid=446620930", "/v3.10/index.php?action=Details&site=GEN&conid=478462211", "/v3.10/index.php?action=Details&site=GEN&conid=446620956", "/v3.10/index.php?action=Details&site=GEN&conid=446620995", "/v3.10/index.php?action=Details&site=GEN&conid=446620950", "/v3.10/index.php?action=Details&site=GEN&conid=446620881", "/v3.10/index.php?action=Details&site=GEN&conid=446620884", "/v3.10/index.php?action=Details&site=GEN&conid=446620990", "/v3.10/index.php?action=Details&site=GEN&conid=478462266", "/v3.10/index.php?action=Details&site=GEN&conid=478462226", "/v3.10/index.php?action=Details&site=GEN&conid=446620947", "/v3.10/index.php?action=Details&site=GEN&conid=446620975", "/v3.10/index.php?action=Details&site=GEN&conid=446620935", "/v3.10/index.php?action=Details&site=GEN&conid=446620965", "/v3.10/index.php?action=Details&site=GEN&conid=446620915", "/v3.10/index.php?action=Details&site=GEN&conid=478462254", "/v3.10/index.php?action=Details&site=GEN&conid=446620898", "/v3.10/index.php?action=Details&site=GEN&conid=446620941", "/v3.10/index.php?action=Details&site=GEN&conid=446620998", "/v3.10/index.php?action=Details&site=GEN&conid=446620903", "/v3.10/index.php?action=Details&site=GEN&conid=446620953", "/v3.10/index.php?action=Details&site=GEN&conid=446620904", "/v3.10/index.php?action=Details&site=GEN&conid=446620987", "/v3.10/index.php?action=Details&site=GEN&conid=446621004", "/v3.10/index.php?action=Details&site=GEN&conid=446620980", "/v3.10/index.php?action=Details&site=GEN&conid=446620960", "/v3.10/index.php?action=Details&site=GEN&conid=446620970", "/v3.10/index.php?action=Details&site=GEN&conid=446620909", "/v3.10/index.php?action=Details&site=GEN&conid=446621001", "/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
+const urls1= [
+"/v3.10/index.php?action=Details&site=GEN&conid=446620977",
+"/v3.10/index.php?action=Details&site=GEN&conid=446620894", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620891", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620921", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620930", 
+"/v3.10/index.php?action=Details&site=GEN&conid=478462211", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620956", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620995", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620950", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620881", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620884", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620990", 
+"/v3.10/index.php?action=Details&site=GEN&conid=478462266", 
+"/v3.10/index.php?action=Details&site=GEN&conid=478462226", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620947", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620975", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620935", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620965", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620915", 
+"/v3.10/index.php?action=Details&site=GEN&conid=478462254", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620898", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620941", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620998", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620903", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620953", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620904", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620987", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446621004", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620980", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620960", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620970", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620909", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446621001", 
+"/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
+
+const urls2 = [
+"/v3.10/index.php?action=Details&site=GEN&conid=426785843", 
+"/v3.10/index.php?action=Details&site=GEN&conid=426785846", 
+"/v3.10/index.php?action=Details&site=GEN&conid=449860965", 
+"/v3.10/index.php?action=Details&site=GEN&conid=4430467", 
+"/v3.10/index.php?action=Details&site=GEN&conid=208710587", 
+"/v3.10/index.php?action=Details&site=GEN&conid=208914695", 
+"/v3.10/index.php?action=Details&site=GEN&conid=251259604", 
+"/v3.10/index.php?action=Details&site=GEN&conid=479405067", 
+"/v3.10/index.php?action=Details&site=GEN&conid=389238320", 
+"/v3.10/index.php?action=Details&site=GEN&conid=324994684", 
+"/v3.10/index.php?action=Details&site=GEN&conid=284197782", 
+"/v3.10/index.php?action=Details&site=GEN&conid=29612223", 
+"/v3.10/index.php?action=Details&site=GEN&conid=8825226", 
+"/v3.10/index.php?action=Details&site=GEN&conid=73400802", 
+"/v3.10/index.php?action=Details&site=GEN&conid=26318918", 
+"/v3.10/index.php?action=Details&site=GEN&conid=240486295", 
+"/v3.10/index.php?action=Details&site=GEN&conid=199829872", 
+"/v3.10/index.php?action=Details&site=GEN&conid=79780521", 
+"/v3.10/index.php?action=Details&site=GEN&conid=339968622", 
+"/v3.10/index.php?action=Details&site=GEN&conid=347787867", 
+"/v3.10/index.php?action=Details&site=GEN&conid=80316786", 
+"/v3.10/index.php?action=Details&site=GEN&conid=1407379", 
+"/v3.10/index.php?action=Details&site=GEN&conid=12828696", 
+"/v3.10/index.php?action=Details&site=GEN&conid=39089692", 
+"/v3.10/index.php?action=Details&site=GEN&conid=111604420", 
+"/v3.10/index.php?action=Details&site=GEN&conid=29612135", 
+"/v3.10/index.php?action=Details&site=GEN&conid=29612256", 
+"/v3.10/index.php?action=Details&site=GEN&conid=476031830", 
+"/v3.10/index.php?action=Details&site=GEN&conid=298538227", 
+"/v3.10/index.php?action=Details&site=GEN&conid=14079", 
+"/v3.10/index.php?action=Details&site=GEN&conid=99668290", 
+"/v3.10/index.php?action=Details&site=GEN&conid=32596680", 
+"/v3.10/index.php?action=Details&site=GEN&conid=13013285", 
+"/v3.10/index.php?action=Details&site=GEN&conid=363412474", 
+"/v3.10/index.php?action=Details&site=GEN&conid=55764652", 
+"/v3.10/index.php?action=Details&site=GEN&conid=13013290", 
+"/v3.10/index.php?action=Details&site=GEN&conid=148713044", 
+"/v3.10/index.php?action=Details&site=GEN&conid=13013300", 
+"/v3.10/index.php?action=Details&site=GEN&conid=87832645", 
+"/v3.10/index.php?action=Details&site=GEN&conid=76815481", 
+"/v3.10/index.php?action=Details&site=GEN&conid=117589399", 
+"/v3.10/index.php?action=Details&site=GEN&conid=26318975", 
+"/v3.10/index.php?action=Details&site=GEN&conid=201411335", 
+"/v3.10/index.php?action=Details&site=GEN&conid=26318976", 
+"/v3.10/index.php?action=Details&site=GEN&conid=26318981", 
+"/v3.10/index.php?action=Details&site=GEN&conid=26319480", 
+"/v3.10/index.php?action=Details&site=GEN&conid=29816327", 
+"/v3.10/index.php?action=Details&site=GEN&conid=97616687", 
+"/v3.10/index.php?action=Details&site=GEN&conid=361082888", 
+"/v3.10/index.php?action=Details&site=GEN&conid=201887215", 
+"/v3.10/index.php?action=Details&site=GEN&conid=67957194", 
+"/v3.10/index.php?action=Details&site=GEN&conid=54418481", 
+"/v3.10/index.php?action=Details&site=GEN&conid=259854200", 
+"/v3.10/index.php?action=Details&site=GEN&conid=26318991", 
+"/v3.10/index.php?action=Details&site=GEN&conid=26318991",
+"/v3.10/index.php?action=Details&site=GEN&conid=77680640",
+"/v3.10/index.php?action=Details&site=GEN&conid=68598660",
+"/v3.10/index.php?action=Details&site=GEN&conid=50496554",
+"/v3.10/index.php?action=Details&site=GEN&conid=106714578", 
+"/v3.10/index.php?action=Details&site=GEN&conid=142893855", 
+"/v3.10/index.php?action=Details&site=GEN&conid=26318993", 
+"/v3.10/index.php?action=Details&site=GEN&conid=26318996", 
+"/v3.10/index.php?action=Details&site=GEN&conid=26319006", 
+"/v3.10/index.php?action=Details&site=GEN&conid=80814599", 
+"/v3.10/index.php?action=Details&site=GEN&conid=14362", 
+"/v3.10/index.php?action=Details&site=GEN&conid=80814692", 
+"/v3.10/index.php?action=Details&site=GEN&conid=26319015", 
+"/v3.10/index.php?action=Details&site=GEN&conid=272334042", 
+"/v3.10/index.php?action=Details&site=GEN&conid=280540808", 
+"/v3.10/index.php?action=Details&site=GEN&conid=41627656", 
+"/v3.10/index.php?action=Details&site=GEN&conid=142250902", 
+"/v3.10/index.php?action=Details&site=GEN&conid=386728100"]
+
+*/
+
+const urls = ['/borsa/azioni/aim-italia/dati-completi.html?isin=IT0005439861&lang=it', '/borsa/derivati/ftse-mib-futures/dati-completi.html?isin=IT0017178531&lang=it'];
+
 // lcp --proxyUrl https://www.borsaitaliana.it
 const borsaItalianaSelector = '#fullcontainer > main > section > div > article > div > div > table > tbody > tr > td:nth-child(1)';
 
@@ -91,8 +207,6 @@ async function scrape (path, selector) {
   return elements
 }
 
-// const urls= ["/v3.10/index.php?action=Details&site=GEN&conid=446620977","/v3.10/index.php?action=Details&site=GEN&conid=446620894", "/v3.10/index.php?action=Details&site=GEN&conid=446620891", "/v3.10/index.php?action=Details&site=GEN&conid=446620921", "/v3.10/index.php?action=Details&site=GEN&conid=446620930", "/v3.10/index.php?action=Details&site=GEN&conid=478462211", "/v3.10/index.php?action=Details&site=GEN&conid=446620956", "/v3.10/index.php?action=Details&site=GEN&conid=446620995", "/v3.10/index.php?action=Details&site=GEN&conid=446620950", "/v3.10/index.php?action=Details&site=GEN&conid=446620881", "/v3.10/index.php?action=Details&site=GEN&conid=446620884", "/v3.10/index.php?action=Details&site=GEN&conid=446620990", "/v3.10/index.php?action=Details&site=GEN&conid=478462266", "/v3.10/index.php?action=Details&site=GEN&conid=478462226", "/v3.10/index.php?action=Details&site=GEN&conid=446620947", "/v3.10/index.php?action=Details&site=GEN&conid=446620975", "/v3.10/index.php?action=Details&site=GEN&conid=446620935", "/v3.10/index.php?action=Details&site=GEN&conid=446620965", "/v3.10/index.php?action=Details&site=GEN&conid=446620915", "/v3.10/index.php?action=Details&site=GEN&conid=478462254", "/v3.10/index.php?action=Details&site=GEN&conid=446620898", "/v3.10/index.php?action=Details&site=GEN&conid=446620941", "/v3.10/index.php?action=Details&site=GEN&conid=446620998", "/v3.10/index.php?action=Details&site=GEN&conid=446620903", "/v3.10/index.php?action=Details&site=GEN&conid=446620953", "/v3.10/index.php?action=Details&site=GEN&conid=446620904", "/v3.10/index.php?action=Details&site=GEN&conid=446620987", "/v3.10/index.php?action=Details&site=GEN&conid=446621004", "/v3.10/index.php?action=Details&site=GEN&conid=446620980", "/v3.10/index.php?action=Details&site=GEN&conid=446620960", "/v3.10/index.php?action=Details&site=GEN&conid=446620970", "/v3.10/index.php?action=Details&site=GEN&conid=446620909", "/v3.10/index.php?action=Details&site=GEN&conid=446621001", "/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
-const urls = ['/borsa/azioni/aim-italia/dati-completi.html?isin=IT0005439861&lang=it', '/borsa/derivati/ftse-mib-futures/dati-completi.html?isin=IT0017178531&lang=it'];
 
 async function runCode() {
   for (let url of urls) {
@@ -104,5 +218,4 @@ async function runCode() {
     console.log(data)
   }
 }
-
 runCode();
