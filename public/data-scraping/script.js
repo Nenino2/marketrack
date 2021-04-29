@@ -77,7 +77,7 @@ async function scrape (url) {
 */
 
 
-const urls= [
+const urls1= [
   "/v3.10/index.php?action=Details&site=GEN&conid=446620977",
   "/v3.10/index.php?action=Details&site=GEN&conid=446620894", 
   "/v3.10/index.php?action=Details&site=GEN&conid=446620891", 
@@ -112,7 +112,7 @@ const urls= [
   "/v3.10/index.php?action=Details&site=GEN&conid=446620909", 
   "/v3.10/index.php?action=Details&site=GEN&conid=446621001", 
   "/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
-const urls1= [
+const urls2= [
   "/v3.10/index.php?action=Details&site=GEN&conid=446620977",
   "/v3.10/index.php?action=Details&site=GEN&conid=446620894", 
   "/v3.10/index.php?action=Details&site=GEN&conid=446620891", 
@@ -148,7 +148,7 @@ const urls1= [
   "/v3.10/index.php?action=Details&site=GEN&conid=446621001", 
   "/v3.10/index.php?action=Details&site=GEN&conid=446620918"];
 
-const urls2 = [
+const urls3 = [
   "/v3.10/index.php?action=Details&site=GEN&conid=426785843", 
   "/v3.10/index.php?action=Details&site=GEN&conid=426785846", 
   "/v3.10/index.php?action=Details&site=GEN&conid=449860965", 
@@ -510,12 +510,12 @@ const urls2 = [
 ]
 
 
-const urls = ['/borsa/azioni/aim-italia/dati-completi.html?isin=IT0005439861&lang=it', '/borsa/derivati/ftse-mib-futures/dati-completi.html?isin=IT0017178531&lang=it'];
+const urls4 = ['/borsa/azioni/aim-italia/dati-completi.html?isin=IT0005439861&lang=it', '/borsa/derivati/ftse-mib-futures/dati-completi.html?isin=IT0017178531&lang=it'];
 
 // lcp --proxyUrl https://www.borsaitaliana.it
 const borsaItalianaSelector = '#fullcontainer > main > section > div > article > div > div > table > tbody > tr > td:nth-child(1)';
 
-// lcp --proxyUrl 
+// lcp --proxyUrl https://contract.ibkr.info
 const contactIbrkSelector = '#contractSpecs > table > tbody > tr > th';
 
 async function scrape (path, selector) {
@@ -529,8 +529,8 @@ async function scrape (path, selector) {
 
 
 async function runCode() {
-  for (let url of urls) {
-    let data = await scrape(url, borsaItalianaSelector);
+  for (let url of urls1) {
+    let data = await scrape(url, contactIbrkSelector);
     // if (data.length === 0) {
     //   confirm('RISOLVI IL CAPTHA: /v3.10/index.php')
     //   data = await scrape(url);
