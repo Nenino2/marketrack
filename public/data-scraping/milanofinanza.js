@@ -4,9 +4,35 @@ async function getDataFromUrl (path) {
     return data;
 }
   
-// lcp --proxyUrl https://www.milanofinanza.it/
+// lcp --proxyUrl /
 async function runCode() {
-    const data = await getDataFromUrl('/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=1&url=future-sull-indice-0a9%3Frefresh_cens')
+    const links= [
+        //CALL FTSE
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=1&url=opzioni-call-mib-1a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=2&url=opzioni-call-mib-1a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=3&url=opzioni-call-mib-1a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=4&url=opzioni-call-mib-1a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=5&url=opzioni-call-mib-1a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=6&url=opzioni-call-mib-1a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=7&url=opzioni-call-mib-1a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=8&url=opzioni-call-mib-1a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=9&url=opzioni-call-mib-1a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=10&url=opzioni-call-mib-1a9%3Frefresh_cens",
+        //PUT FTSE
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=1&url=opzioni-put-mib-2a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=2&url=opzioni-put-mib-2a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=3&url=opzioni-put-mib-2a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=4&url=opzioni-put-mib-2a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=5&url=opzioni-put-mib-2a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=6&url=opzioni-put-mib-2a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=7&url=opzioni-put-mib-2a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=8&url=opzioni-put-mib-2a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=9&url=opzioni-put-mib-2a9%3Frefresh_cens",
+        "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=10&url=opzioni-put-mib-2a9%3Frefresh_cens",
+]
+for (let link of links) {
+    const data = await getDataFromUrl(link)
+}
     console.log(data)
 }
 runCode()
