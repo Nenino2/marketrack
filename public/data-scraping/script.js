@@ -1,8 +1,8 @@
 "use strict"
-import {selectorBorsaItaliana, urlsBondsBorsaItaliana} from './borsaitaliana';
-import {selectorIbkr, urlsFuturesIbkr, urlsStocksIbkr} from './ibkr';
-import {getOptionLinksMilanoFinanza} from './milanofinanza';
-import {getJsonDataFromUrl, scrapeHtmlDataFromUrl} from './utils'
+import {selectorBorsaItaliana, urlsBondsBorsaItaliana} from './borsaitaliana.js';
+import {selectorIbkr, urlsFuturesIbkr, urlsStocksIbkr} from './ibkr.js';
+import {getOptionLinksMilanoFinanza} from './milanofinanza.js';
+import {getJsonDataFromUrl, scrapeHtmlDataFromUrl} from './utils.js'
 
 async function getBonds() {
   const resultElements = [];
@@ -47,13 +47,14 @@ async function getOptions() {
  * quindi commentare le funzioni degli altri siti che non stiamo usando
  */
 async function runCode() {
-	const bonds = await getBonds();
-	const futures = await getFutures();
-	const stocks = await getStocks();
+	console.log('Loading....')
+	// const bonds = await getBonds();
+	// const futures = await getFutures();
+	// const stocks = await getStocks();
 	const options = await getOptions();
-	console.log(bonds);
-	console.log(futures);
-	console.log(stocks);
+	// console.log(bonds);
+	// console.log(futures);
+	// console.log(stocks);
 	console.log(options);
 }
 runCode();

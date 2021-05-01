@@ -1,5 +1,7 @@
 // lcp --proxyUrl https://www.milanofinanza.it/
 
+import { getJsonDataFromUrl } from './utils.js'
+
 export async function getOptionLinksMilanoFinanza() {
     const links= [
         //CALL FTSE
@@ -30,14 +32,14 @@ export async function getOptionLinksMilanoFinanza() {
     const finalArray=[];
 
     const createLink= function (url) {
-        const urlPrefix ="/Mercati/GetQuotazioni?codice=1a90057";
+        const urlPrefix ="/Mercati/GetQuotazioni?codice=";
         let id=url.replace(/.*-/, "");
         const link=urlPrefix + id;
         return link;
     }
 
     for (let link of links) {
-        const object = await getDataFromUrl(link);
+        const object = await getJsonDataFromUrl(link);
         const data=object.Data;
         for (let i=0;i<30;i++) {
             initialArray=data[i];
