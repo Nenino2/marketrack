@@ -31,27 +31,27 @@ async function runCode() {
         "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=10&url=opzioni-put-mib-2a9%3Frefresh_cens",
 ]
 
-let Array1=[];
-let Final=[];
+const array1=[];
+const finalArray=[];
 
 const CreateLink= function (url) {
     const domain ="https://www.milanofinanza.it";
     let id=url.replace(/.*codice=/, "");
-    const Link=domain + String(id);
+    const Link=domain + id;
     return Link;
 }
 
 for (let link of links) {
     const object = await getDataFromUrl(link);
-    const Data=object.Data;
+    const data=object.Data;
     for (let i=0;i<30;i++) {
-        Array1=Data[i];
-        const object1=Array1[0];
+        array1=data[i];
+        const object1=array1[0];
         const cod=object1.UrlStock;
-        const FinalLink=CreateLink (cod);
-        Final.push(FinalLink);
+        const finalLink=CreateLink (cod);
+        finalArray.push(finalLink);
     }
 }
-console.log(Final);
+console.log(finalArray);
 }
 runCode()

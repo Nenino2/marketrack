@@ -77,7 +77,7 @@ async function scrape (url) {
 */
 
 
-const urls1= [
+const urlsFutures= [
   "/v3.10/index.php?action=Details&site=GEN&conid=446620977",
   "/v3.10/index.php?action=Details&site=GEN&conid=446620894", 
   "/v3.10/index.php?action=Details&site=GEN&conid=446620891", 
