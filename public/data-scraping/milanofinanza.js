@@ -35,9 +35,9 @@ let Array1=[];
 let Final=[];
 
 const CreateLink= function (url) {
-    const domain ="https://www.milanofinanza.it";
-    let id=url.replace(/.*codice=/, "");
-    const Link=domain + String(id);
+    const urlPrefix ="/Mercati/GetQuotazioni?codice=1a90057";
+    let id=url.replace(/.*-/, "");
+    const Link=urlPrefix + id;
     return Link;
 }
 
