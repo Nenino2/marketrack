@@ -5,7 +5,7 @@ async function getDataFromUrl (path) {
 }
   
 // lcp --proxyUrl https://www.milanofinanza.it/
-export async function getMilanoFinanzaLinks() {
+export async function getOptionLinks() {
     const links= [
         //CALL FTSE
         "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=1&url=opzioni-call-mib-1a9%3Frefresh_cens",
