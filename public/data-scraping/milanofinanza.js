@@ -6,7 +6,7 @@ async function getDataFromUrl (path) {
   
 // lcp --proxyUrl https://www.milanofinanza.it/
 async function runCode() {
-    const links= [
+    const getOptionsLink= [
         //CALL FTSE
         "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=1&url=opzioni-call-mib-1a9%3Frefresh_cens",
         "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=2&url=opzioni-call-mib-1a9%3Frefresh_cens",
@@ -31,7 +31,7 @@ async function runCode() {
         "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=10&url=opzioni-put-mib-2a9%3Frefresh_cens",
 ]
 
-const initialArray=[];
+let initialArray=[];
 const finalArray=[];
 
 const CreateLink= function (url) {
