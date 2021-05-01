@@ -1,11 +1,6 @@
-async function getDataFromUrl (path) {
-    const result = await fetch('http://localhost:8010/proxy' + path);
-    const data = await result.json();
-    return data;
-}
-  
 // lcp --proxyUrl https://www.milanofinanza.it/
-export async function getOptionLinks() {
+
+export async function getOptionLinksMilanoFinanza() {
     const links= [
         //CALL FTSE
         "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=1&url=opzioni-call-mib-1a9%3Frefresh_cens",
