@@ -34,11 +34,11 @@ async function runCode() {
 const initialArray=[];
 const finalArray=[];
 
-const CreateLink= function (url) {
+const createLink= function (url) {
     const urlPrefix ="/Mercati/GetQuotazioni?codice=1a90057";
     let id=url.replace(/.*-/, "");
-    const Link=urlPrefix + id;
-    return Link;
+    const link=urlPrefix + id;
+    return link;
 }
 
 for (let link of links) {
@@ -48,7 +48,7 @@ for (let link of links) {
         initialArray=data[i];
         const object1=initialArray[0];
         const cod=object1.UrlStock;
-        const finalLink=CreateLink (cod);
+        const finalLink=createLink(cod);
         finalArray.push(finalLink);
     }
 }
