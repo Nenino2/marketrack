@@ -48,9 +48,10 @@ for (let link of links) {
         Array1=Data[i];
         const object1=Array1[0];
         const cod=object1.UrlStock;
-        Final=CreateLink (cod);
-        console.log(Final);
+        const FinalLink=CreateLink (cod);
+        Final.push(FinalLink);
     }
 }
+console.log(Final);
 }
 runCode()
