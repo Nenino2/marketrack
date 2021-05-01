@@ -4,7 +4,7 @@ async function getDataFromUrl (path) {
     return data;
 }
   
-// lcp --proxyUrl /
+// lcp --proxyUrl https://www.milanofinanza.it/
 async function runCode() {
     const links= [
         //CALL FTSE
@@ -30,9 +30,27 @@ async function runCode() {
         "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=9&url=opzioni-put-mib-2a9%3Frefresh_cens",
         "/Mercati/GetDataTabelle?alias=&campoOrdinamento=0002&numElem=30&ordinamento=asc&page=10&url=opzioni-put-mib-2a9%3Frefresh_cens",
 ]
-for (let link of links) {
-    const data = await getDataFromUrl(link)
+
+let Array1=[];
+let Final=[];
+
+const CreateLink= function (url) {
+    const domain ="https://www.milanofinanza.it";
+    let id=url.replace(/.*codice=/, "");
+    const Link=domain + String(id);
+    return Link;
 }
-    console.log(data)
+
+for (let link of links) {
+    const object = await getDataFromUrl(link);
+    const Data=object.Data;
+    for (let i=0;i<30;i++) {
+        Array1=Data[i];
+        const object1=Array1[0];
+        const cod=object1.UrlStock;
+        Final=CreateLink (cod);
+        console.log(Final);
+    }
+}
 }
 runCode()
