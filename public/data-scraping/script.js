@@ -43,7 +43,8 @@ async function getOptions() {
 
 /**
  * Questa funzione farà un webscraping e prenderà tutte le informazioni di cui abbiamo bisogno
- * Dato che stiamo prendendo i dati da 3 siti diversi, bisogna usare un proxy alla volta, quindi commentare le funzioni degli altri siti che non stiamo usando
+ * Dato che stiamo prendendo i dati da 3 siti diversi, bisogna usare un proxy alla volta, 
+ * quindi commentare le funzioni degli altri siti che non stiamo usando
  */
 async function runCode() {
 	const bonds = await getBonds();
