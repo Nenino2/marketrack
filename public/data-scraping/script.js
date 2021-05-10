@@ -51,32 +51,36 @@ async function runCode() {
 	// const bonds = await getBonds();
 	// const futures = await getFutures();
   const check= function (array,element) {
-    return array===element;
+    return array[0]===element;
   };
 	const stocks = await getStocks();
   for (let stock of stocks) 
   {
-    let name=stock.find(check( ,"Description/Name"));
-    let symbol=stock.find(check( ,"Symbol"));
-    let exchange=stock.find(check( ,"Exchange"));
-    let type=stock.find(check( ,"Contract Type"));
-    let country=stock.find(check( ,"Country/Region"));
-    let currency=stock.find(check( ,"Currency"));
-    let isin=stock.find(check( ,"ISIN"));
-    let website=stock.find(check( ,"Exchange Website"));
-    let hours=stock.find(check( ,"Liquid Trading Hours"));
-    let object = {
-      name:name[1],
-      symbol: symbol[1],
-      exchange: exchange[1],
-      type: type[1],
-      country: country[1],
-      currency: currency[1],
-      isin: isin[1],
-      website: website[1],
-      hours: hours[1],
-    };
+    for (let element of stock) 
+    {
+      let name=stock.find(check(element,"Description/Name"));
+      let symbol=stock.find(check(element,"Symbol"));
+      let exchange=stock.find(check(element ,"Exchange"));
+      let type=stock.find(check(element,"Contract Type"));
+      let country=stock.find(check(element,"Country/Region"));
+      let currency=stock.find(check(element,"Currency"));
+      let isin=stock.find(check(element,"ISIN"));
+      let website=stock.find(check(element,"Exchange Website"));
+      let hours=stock.find(check(element,"Liquid Trading Hours"));
+      let object = {
+        name:name[1],
+        symbol: symbol[1],
+        exchange: exchange[1],
+        type: type[1],
+        country: country[1],
+        currency: currency[1],
+        isin: isin[1],
+        website: website[1],
+        hours: hours[1],
+      };
+    }
     console.log(object);
+    
   }
   
 
