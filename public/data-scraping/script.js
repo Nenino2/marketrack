@@ -50,11 +50,28 @@ async function runCode() {
 	console.log('Loading....')
 	// const bonds = await getBonds();
 	// const futures = await getFutures();
-	// const stocks = await getStocks();
-	const options = await getOptions();
+	const stocks = await getStocks();
+	//const options = await getOptions();
 	// console.log(bonds);
 	// console.log(futures);
-	// console.log(stocks);
-	console.log(options);
+	console.log(stocks);
+	//console.log(options);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 runCode();
