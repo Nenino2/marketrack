@@ -1,5 +1,57 @@
 // lcp --proxyUrl https://contract.ibkr.info
 
+
+//VSE(1): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=vse&showcategories=STK#productbuffer
+//VSE(2): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=vse&showcategories=STK&p=&cc=&limit=100&page=2
+//VSE(3): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=vse&showcategories=STK&p=&cc=&limit=100&page=3
+
+
+//ENEXT.BE(1): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=enext.be&showcategories=STK#productbuffer
+//ENEXT.BE(2): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=enext.be&showcategories=STK&p=&cc=&limit=100&page=2
+
+
+//SBF(1): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=sbf&showcategories=STK#productbuffer
+//SBF(2): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=sbf&showcategories=STK&p=&cc=&limit=100&page=2
+//SBF(3): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=sbf&showcategories=STK&p=&cc=&limit=100&page=3
+//SBF(4): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=sbf&showcategories=STK&p=&cc=&limit=100&page=4
+//SBF(5): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=sbf&showcategories=STK&p=&cc=&limit=100&page=5
+
+
+//FWB(2): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=fwb&showcategories=STK&p=&cc=&limit=100&page=2
+//FWB(3): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=fwb&showcategories=STK&p=&cc=&limit=100&page=3
+//FWB(4): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=fwb&showcategories=STK&p=&cc=&limit=100&page=4
+//FWB(5): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=fwb&showcategories=STK&p=&cc=&limit=100&page=5
+//FWB(6): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=fwb&showcategories=STK&p=&cc=&limit=100&page=6
+
+
+//SWB(1): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=swb&showcategories=STK#productbuffer
+//SWB(2): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=swb&showcategories=STK&p=&cc=&limit=100&page=2
+//SWB(5): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=swb&showcategories=STK&p=&cc=&limit=100&page=5
+//SWB(4): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=swb&showcategories=STK&p=&cc=&limit=100&page=6
+//SWB(5): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=swb&showcategories=STK&p=&cc=&limit=100&page=7
+
+
+//SFB(1): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=sfb&showcategories=STK#productbuffer
+//SFB(2): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=sfb&showcategories=STK&p=&cc=&limit=100&page=2
+//SFB(3): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=sfb&showcategories=STK&p=&cc=&limit=100&page=3
+//SFB(4): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=sfb&showcategories=STK&p=&cc=&limit=100&page=4
+//SFB(5): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=sfb&showcategories=STK&p=&cc=&limit=100&page=5
+
+
+//EBS(3): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=ebs&showcategories=STK&p=&cc=&limit=100&page=3
+//EBS(6): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=ebs&showcategories=STK&p=&cc=&limit=100&page=6
+
+
+//LSE(1): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=lse&showcategories=STK#productbuffer
+//LSE(3): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=lse&showcategories=STK&p=&cc=&limit=100&page=3
+//LSE(5): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=lse&showcategories=STK&p=&cc=&limit=100&page=5
+//LSE(6): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=lse&showcategories=STK&p=&cc=&limit=100&page=6
+//LSE(9): https://www.interactivebrokers.eu/en/index.php?f=41295&exch=lse&showcategories=STK&p=&cc=&limit=100&page=9
+
+
+
+
+
 export const selectorIbkr = '#contractSpecs > table > tbody > tr > th';
 
 export const urlsFuturesIbkr = [

@@ -55,7 +55,7 @@ async function runCode() {
   };
   let object={};
   let arrayOfObjects=[];
-  
+
 	const stocks = await getStocks();
   for (let stock of stocks) 
   {
@@ -88,31 +88,11 @@ async function runCode() {
     console.log(arrayOfObjects);
   }
   
-
-
-
 	//const options = await getOptions();
 	// console.log(bonds);
 	// console.log(futures);
-
 	//console.log(stocks);
 	//console.log(options);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 runCode();
