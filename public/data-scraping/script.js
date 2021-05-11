@@ -53,21 +53,25 @@ async function runCode() {
   const check= function (array,element) {
     return array[0]===element;
   };
+  let object={};
+  let arrayOfObjects=[];
+  
 	const stocks = await getStocks();
   for (let stock of stocks) 
   {
+    let i=0;
     for (let element of stock) 
     {
-      let name=stock.find(check(element,"Description/Name"));
-      let symbol=stock.find(check(element,"Symbol"));
-      let exchange=stock.find(check(element ,"Exchange"));
-      let type=stock.find(check(element,"Contract Type"));
-      let country=stock.find(check(element,"Country/Region"));
-      let currency=stock.find(check(element,"Currency"));
-      let isin=stock.find(check(element,"ISIN"));
-      let website=stock.find(check(element,"Exchange Website"));
-      let hours=stock.find(check(element,"Liquid Trading Hours"));
-      let object = {
+      let name=stock.find(element=>check(element,"Description/Name"));
+      let symbol=stock.find(element=>check(element,"Symbol"));
+      let exchange=stock.find(element=>check(element ,"Exchange"));
+      let type=stock.find(element=>check(element,"Contract Type"));
+      let country=stock.find(element=>check(element,"Country/Region"));
+      let currency=stock.find(element=>check(element,"Currency"));
+      let isin=stock.find(element=>check(element,"ISIN"));
+      let website=stock.find(element=>check(element,"Exchange Website"));
+      let hours=stock.find(element=>check(element,"Liquid Trading Hours"));
+      object = {
         name:name[1],
         symbol: symbol[1],
         exchange: exchange[1],
@@ -79,8 +83,9 @@ async function runCode() {
         hours: hours[1],
       };
     }
-    console.log(object);
-    
+    object=arrayOfObjects[i];
+    i++;
+    console.log(arrayOfObjects);
   }
   
 
