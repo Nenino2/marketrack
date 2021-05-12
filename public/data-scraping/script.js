@@ -5,30 +5,30 @@ import {getOptionLinksMilanoFinanza} from './milanofinanza.js';
 import {getJsonDataFromUrl, scrapeHtmlDataFromUrl} from './utils.js'
 
 async function getBonds() {
-  const resultElements = [];
-  for (let url of urlsBondsBorsaItaliana) {
-    const data = await scrapeHtmlDataFromUrl(url, selectorBorsaItaliana);
-    resultElements.push(data);
-  }
-  return resultElements;
+	const resultElements = [];
+	for (let url of urlsBondsBorsaItaliana) {
+		const data = await scrapeHtmlDataFromUrl(url, selectorBorsaItaliana);
+		resultElements.push(data);
+	}
+	return resultElements;
 }
 
 async function getFutures() {
-  const resultElements = [];
-  for (let url of urlsFuturesIbkr) {
-    const data = await scrapeHtmlDataFromUrl(url, selectorIbkr);
-    resultElements.push(data);
-  }
-  return resultElements;
+	const resultElements = [];
+	for (let url of urlsFuturesIbkr) {
+		const data = await scrapeHtmlDataFromUrl(url, selectorIbkr);
+		resultElements.push(data);
+	}
+	return resultElements;
 }
 
 async function getStocks() {
-  const resultElements = [];
-  for (let url of urlsStocksIbkr) {
-    const data = await scrapeHtmlDataFromUrl(url, selectorIbkr);
-    resultElements.push(data);
-  }
-  return resultElements;
+	const resultElements = [];
+	for (let url of urlsStocksIbkr) {
+		const data = await scrapeHtmlDataFromUrl(url, selectorIbkr);
+		resultElements.push(data);
+	}
+	return resultElements;
 }
 
 async function getOptions() {
@@ -50,44 +50,37 @@ async function runCode() {
 	console.log('Loading....')
 	// const bonds = await getBonds();
 	// const futures = await getFutures();
-  const check= function (array,element) {
-    return array[0]===element;
-  };
-  let object={};
-  let arrayOfObjects=[];
+	const check= function (array,element) {
+		return array[0]===element;
+	};
 
 	const stocks = await getStocks();
-  for (let stock of stocks) 
-  {
-    let i=0;
-    for (let element of stock) 
-    {
-      let name=stock.find(element=>check(element,"Description/Name"));
-      let symbol=stock.find(element=>check(element,"Symbol"));
-      let exchange=stock.find(element=>check(element ,"Exchange"));
-      let type=stock.find(element=>check(element,"Contract Type"));
-      let country=stock.find(element=>check(element,"Country/Region"));
-      let currency=stock.find(element=>check(element,"Currency"));
-      let isin=stock.find(element=>check(element,"ISIN"));
-      let website=stock.find(element=>check(element,"Exchange Website"));
-      let hours=stock.find(element=>check(element,"Liquid Trading Hours"));
-      object = {
-        name:name[1],
-        symbol: symbol[1],
-        exchange: exchange[1],
-        type: type[1],
-        country: country[1],
-        currency: currency[1],
-        isin: isin[1],
-        website: website[1],
-        hours: hours[1],
-      };
-    }
-    object=arrayOfObjects[i];
-    i++;
-    console.log(arrayOfObjects);
-  }
-  
+	const parsedStocks = [];
+	for (let stock of stocks) {
+		const name=stock.find(element=>check(element,"Description/Name"));
+		const symbol=stock.find(element=>check(element,"Symbol"));
+		const exchange=stock.find(element=>check(element ,"Exchange"));
+		const type=stock.find(element=>check(element,"Contract Type"));
+		const country=stock.find(element=>check(element,"Country/Region"));
+		const currency=stock.find(element=>check(element,"Currency"));
+		const isin=stock.find(element=>check(element,"ISIN"));
+		const website=stock.find(element=>check(element,"Exchange Website"));
+		const hours=stock.find(element=>check(element,"Liquid Trading Hours"));
+		const currentStock = {
+			name:name[1],
+			symbol: symbol[1],
+			exchange: exchange[1],
+			type: type[1],
+			country: country[1],
+			currency: currency[1],
+			isin: isin[1],
+			website: website[1],
+			hours: hours[1],
+		};
+		parsedStocks.push(currentStock)
+	}
+	console.log(parsedStocks);
+	
 	//const options = await getOptions();
 	// console.log(bonds);
 	// console.log(futures);
