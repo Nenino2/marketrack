@@ -67,6 +67,7 @@ async function getStocksFromStocksPageUrls(stocksPageUrls) {
 
 async function runCode() {
 	console.log('Loading....')
+	// AGGIUNGI LO STESSO NON SOLO PER EBS; POI METTI TUTTO IN UN UNICO OGGETTO
 	const data = await getStocksFromStocksPageUrls(stocksPageUrls.EBS);
 	console.log(data)
 	downloadTextFile(JSON.stringify(data), 'data.json');
