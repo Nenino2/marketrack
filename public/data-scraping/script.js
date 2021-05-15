@@ -8,7 +8,7 @@ async function getStocksLinks(listPageUrls) {
 		const data = await scrapeHtmlDataFromUrl(url, selectorIbkrPage, 9991, el => el && el.href ? el.href.match(/\'https\:\/\/contract\.ibkr\.info(.*?)\'/)[1] : null);
 		resultElements.push(data);
 	}
-	return resultElements;
+	return resultElements.flat();
 }
 
 async function getStocks(urlsStocksIbkr) {
@@ -58,7 +58,8 @@ function parseStocks(stocks) {
 }
 
 async function getStocksFromStocksPageUrls(stocksPageUrls) {
-	const links = await getStocksLinks(stocksPageUrls)
+	const links = await getStocksLinks(stocksPageUrls);
+	console.log(links)
 	const stocks = await getStocks(links);
 	const parsedStocks = parseStocks(stocks)
 	return parsedStocks;
