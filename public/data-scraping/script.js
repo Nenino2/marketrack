@@ -57,15 +57,15 @@ async function runCode() {
 	const stocks = await getStocks();
 	const parsedStocks = [];
 	for (let stock of stocks) {
-		const nameArray=stock.find(element=>check(element,"Description/Name"));
-		const symbolArray=stock.find(element=>check(element,"Symbol"));
-		const exchangeArray=stock.find(element=>check(element ,"Exchange"));
-		const typeArray=stock.find(element=>check(element,"Contract Type"));
-		const countryArray=stock.find(element=>check(element,"Country/Region"));
-		const currencyArray=stock.find(element=>check(element,"Currency"));
-		const isinArray=stock.find(element=>check(element,"ISIN"));
-		const websiteArray=stock.find(element=>check(element,"Exchange Website"));
-		const hoursArray=stock.find(element=>check(element,"Liquid Trading Hours"));
+		const nameArray=stock.find(element=>check(element,"Description/Name")) || [];
+		const symbolArray=stock.find(element=>check(element,"Symbol")) || [];
+		const exchangeArray=stock.find(element=>check(element ,"Exchange")) || [];
+		const typeArray=stock.find(element=>check(element,"Contract Type")) || [];
+		const countryArray=stock.find(element=>check(element,"Country/Region")) || [];
+		const currencyArray=stock.find(element=>check(element,"Currency")) || [];
+		const isinArray=stock.find(element=>check(element,"ISIN")) || [];
+		const websiteArray=stock.find(element=>check(element,"Exchange Website")) || [];
+		const hoursArray=stock.find(element=>check(element,"Liquid Trading Hours")) || [];
 		const currentStock = {
 			name:nameArray[1],
 			symbol: symbolArray[1],
@@ -80,6 +80,8 @@ async function runCode() {
 		parsedStocks.push(currentStock)
 	}
 	console.log(parsedStocks);
+	const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(parsedStocks));
+	console.log(dataStr)
 	
 	//const options = await getOptions();
 	// console.log(bonds);
