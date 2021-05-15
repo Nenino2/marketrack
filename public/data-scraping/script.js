@@ -88,6 +88,10 @@ async function runCode() {
 	// console.log(futures);
 	//console.log(stocks);
 	//console.log(options);
+
+	// "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify());
+	// Array.from(document.querySelectorAll('#exchange-products > div > div > div.col-xs-12.col-sm-12.col-md-9.col-lg-9 > div > div > div > table > tbody > tr > td:nth-child(2) > a')).map(el => el.href.match(/\'(.*?)\'/)[1])
+	// "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(Array.from(document.querySelectorAll('#exchange-products > div > div > div.col-xs-12.col-sm-12.col-md-9.col-lg-9 > div > div > div > table > tbody > tr > td:nth-child(2) > a')).map(el => el.href.match(/\'(.*?)\'/)[1])));
 }
 
 runCode();
