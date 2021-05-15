@@ -57,12 +57,17 @@ function parseStocks(stocks) {
 	return parsedStocks;
 }
 
+async function getStocksFromStocksPageUrls(stocksPageUrls) {
+	const links = await getStocksLinks(stocksPageUrls)
+	const stocks = await getStocks(links);
+	const parsedStocks = parseStocks(stocks)
+	return parsedStocks;
+}
+
 async function runCode() {
 	console.log('Loading....')
-	const links = await getStocksLinks(stocksPageUrls.EBS)
-	const stocks = await getStocks(links.splice(0,2));
-	const parsedStocks = parseStocks(stocks)
-	console.log(parsedStocks)
+	const data = await getStocksFromStocksPageUrls(stocksPageUrls.EBS);
+	console.log(data)
 }
 
 runCode();
