@@ -1,6 +1,6 @@
 "use strict"
 import {selectorIbkr, selectorIbkrPage, stocksPageUrls} from './ibkr.js';
-import {scrapeHtmlDataFromUrl} from './utils.js'
+import {scrapeHtmlDataFromUrl, downloadTextFile} from './utils.js'
 
 async function getStocksLinks(listPageUrls) {
 	const resultElements = [];
@@ -68,6 +68,7 @@ async function runCode() {
 	console.log('Loading....')
 	const data = await getStocksFromStocksPageUrls(stocksPageUrls.EBS);
 	console.log(data)
+	downloadTextFile(JSON.stringify(data), 'data.json');
 }
 
 runCode();
