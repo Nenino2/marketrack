@@ -1,60 +1,33 @@
 "use strict"
-import {selectorBorsaItaliana, urlsBondsBorsaItaliana} from './borsaitaliana.js';
-import {selectorIbkr, urlsFuturesIbkr, urlsStocksIbkr} from './ibkr.js';
-import {getOptionLinksMilanoFinanza} from './milanofinanza.js';
-import {getJsonDataFromUrl, scrapeHtmlDataFromUrl} from './utils.js'
+import {selectorIbkr, selectorIbkrPage, stocksPageUrls} from './ibkr.js';
+import {scrapeHtmlDataFromUrl} from './utils.js'
 
-async function getBonds() {
+async function getStocksLinks(listPageUrls) {
 	const resultElements = [];
-	for (let url of urlsBondsBorsaItaliana) {
-		const data = await scrapeHtmlDataFromUrl(url, selectorBorsaItaliana);
+	for (let url of listPageUrls) {
+		const data = await scrapeHtmlDataFromUrl(url, selectorIbkrPage, 9991, el => el && el.href ? el.href.match(/\'https\:\/\/contract\.ibkr\.info(.*?)\'/)[1] : null);
 		resultElements.push(data);
 	}
 	return resultElements;
 }
 
-async function getFutures() {
-	const resultElements = [];
-	for (let url of urlsFuturesIbkr) {
-		const data = await scrapeHtmlDataFromUrl(url, selectorIbkr);
-		resultElements.push(data);
-	}
-	return resultElements;
-}
-
-async function getStocks() {
+async function getStocks(urlsStocksIbkr) {
 	const resultElements = [];
 	for (let url of urlsStocksIbkr) {
-		const data = await scrapeHtmlDataFromUrl(url, selectorIbkr);
+		let data = await scrapeHtmlDataFromUrl(url, selectorIbkr, 9990);
+		if (!data || !data.length) {
+			alert('CAPTHAAAAAAA');
+			data = await scrapeHtmlDataFromUrl(url, selectorIbkr, 9990);
+		}
 		resultElements.push(data);
 	}
 	return resultElements;
 }
 
-async function getOptions() {
-	const urlOptionsMilanoFinanza = await getOptionLinksMilanoFinanza();
-	const resultElements = [];
-	for (let url of urlOptionsMilanoFinanza) {
-		const data = await getJsonDataFromUrl(url);
-		resultElements.push(data);
-	}
-	return resultElements;
-}
-
-/**
- * Questa funzione farà un webscraping e prenderà tutte le informazioni di cui abbiamo bisogno
- * Dato che stiamo prendendo i dati da 3 siti diversi, bisogna usare un proxy alla volta, 
- * quindi commentare le funzioni degli altri siti che non stiamo usando
- */
-async function runCode() {
-	console.log('Loading....')
-	// const bonds = await getBonds();
-	// const futures = await getFutures();
+function parseStocks(stocks) {
 	const check= function (array,element) {
 		return array[0]===element;
 	};
-
-	const stocks = await getStocks();
 	const parsedStocks = [];
 	for (let stock of stocks) {
 		const nameArray=stock.find(element=>check(element,"Description/Name")) || [];
@@ -66,6 +39,7 @@ async function runCode() {
 		const isinArray=stock.find(element=>check(element,"ISIN")) || [];
 		const websiteArray=stock.find(element=>check(element,"Exchange Website")) || [];
 		const hoursArray=stock.find(element=>check(element,"Liquid Trading Hours")) || [];
+		const closingPriceArray=stock.find(element=>check(element,"Closing Price")) || [];
 		const currentStock = {
 			name:nameArray[1],
 			symbol: symbolArray[1],
@@ -76,22 +50,19 @@ async function runCode() {
 			isin: isinArray[1],
 			website: websiteArray[1],
 			hours: hoursArray[1],
+			closingPrice: closingPriceArray[1]
 		};
 		parsedStocks.push(currentStock)
 	}
-	console.log(parsedStocks);
-	const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(parsedStocks));
-	console.log(dataStr)
-	
-	//const options = await getOptions();
-	// console.log(bonds);
-	// console.log(futures);
-	//console.log(stocks);
-	//console.log(options);
+	return parsedStocks;
+}
 
-	// "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify());
-	// Array.from(document.querySelectorAll('#exchange-products > div > div > div.col-xs-12.col-sm-12.col-md-9.col-lg-9 > div > div > div > table > tbody > tr > td:nth-child(2) > a')).map(el => el.href.match(/\'(.*?)\'/)[1])
-	// "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(Array.from(document.querySelectorAll('#exchange-products > div > div > div.col-xs-12.col-sm-12.col-md-9.col-lg-9 > div > div > div > table > tbody > tr > td:nth-child(2) > a')).map(el => el.href.match(/\'(.*?)\'/)[1])));
+async function runCode() {
+	console.log('Loading....')
+	const links = await getStocksLinks(stocksPageUrls.EBS)
+	const stocks = await getStocks(links.splice(0,2));
+	const parsedStocks = parseStocks(stocks)
+	console.log(parsedStocks)
 }
 
 runCode();
