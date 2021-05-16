@@ -1,3 +1,23 @@
 header {
     background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(https://www.bankrate.com/2019/01/25123256/How-to-buy-stocks.jpg);
 }
+
+.table {
+    font-size: 1.8rem;
+    margin: 3rem 10rem;
+    box-shadow: 0 10px 20px 0 rgb(0 0 0 / 5%);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    padding: 3rem;
+    margin: 1rem 0;
+    border-bottom: 1px solid rgb(0 0 0 / 5%);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
