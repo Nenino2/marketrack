@@ -2,6 +2,20 @@ header {
     background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(https://api.time.com/wp-content/uploads/2020/02/zoom-zm-stocks-coronavirus.jpg);
 }
 
+.searchbar {
+    margin: 3rem 10rem;
+    display: flex;
+}
+
+.searchbar input {
+    border: 1px solid rgb(0 0 0 / 10%);
+    outline: none;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 3rem;
+    padding: 10px;
+}
+
 .list {
     font-size: 1.5rem;
     margin: 3rem 10rem;
