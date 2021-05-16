@@ -7,7 +7,6 @@ const nextButtonDom = document.getElementById('next-button')
 let docLast = null;
 
 async function searchWithOptions() {
-    docLast = null;
     const textValue = searchInputDom.value;
     const optionValue = document.querySelector('input[name="target"]:checked').value;
     if (!textValue || !optionValue) return load()
@@ -18,7 +17,7 @@ async function searchWithOptions() {
         await searchByKeyValueInArray(optionValue, textValue)
     }
 }
-searchButtonDom.addEventListener('click', searchWithOptions)
+searchButtonDom.addEventListener('click', () => {docLast = null;searchWithOptions})
 
 nextButtonDom.addEventListener('click', async () => {
     if (!searchInputDom.value) {

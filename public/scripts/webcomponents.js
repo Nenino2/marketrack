@@ -12,3 +12,4 @@ function createWebComponent(componentName, fileName) {
 
 createWebComponent('app-navbar', '/components/app-navbar/app-navbar.html')
 createWebComponent('app-header', '/components/app-header/app-header.html')
+createWebComponent('app-overlay', '/components/app-overlay/app-overlay.html')
