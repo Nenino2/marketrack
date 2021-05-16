@@ -57,6 +57,6 @@
     '/en/index.php?f=41295&exch=lse&showcategories=STK&p=&cc=&limit=100&page=9'
 ]
 
-export const stocksPageUrls = {VSE, ENEXT, SBF, FWB, SWB, SFB, EBS, LSE}
+export const stocksPageUrls = [...VSE, ...ENEXT, ...SBF, ...FWB, ...SWB, ...SFB, ...EBS, ...LSE]
 export const selectorIbkrPage = '#exchange-products > div > div > div.col-xs-12.col-sm-12.col-md-9.col-lg-9 > div > div > div > table > tbody > tr > td:nth-child(2) > a';
 export const selectorIbkr = '#contractSpecs > table > tbody > tr > th';

@@ -53,16 +53,14 @@ function parseStocks(stocks) {
 
 async function getStocksFromStocksPageUrls(stocksPageUrls) {
 	const links = await getStocksLinks(stocksPageUrls);
-	const stocks = await getStocks(links.slice(0, 5));
+	const stocks = await getStocks(links/*.slice(0, 5)*/);
 	const parsedStocks = parseStocks(stocks)
 	return parsedStocks;
 }
 
 async function runCode() {
 	console.log('Loading....')
-	// AGGIUNGI LO STESSO NON SOLO PER EBS; POI METTI TUTTO IN UN UNICO OGGETTO
-	const data = await getStocksFromStocksPageUrls(stocksPageUrls.EBS);
-	console.log(data)
+	const data = await getStocksFromStocksPageUrls(stocksPageUrls);
 	downloadTextFile(JSON.stringify(data), 'data.json');
 }
 
