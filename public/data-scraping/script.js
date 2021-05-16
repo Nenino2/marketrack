@@ -90,7 +90,7 @@ async function getStocksFromStocksPageUrls(stocksPageUrls) {
 	let links, stocks, parsedStocks;
 	try {
 		links = await getStocksLinks(stocksPageUrls);
-		stocks = await getStocks(links.slice(0,1000));
+		stocks = await getStocks(links);
 		parsedStocks = parseStocks(stocks)
 	} catch(error) {
 		console.log(error);
