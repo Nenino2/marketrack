@@ -11,7 +11,7 @@ async function getDatabaseDataElementList () {
 async function deployToDatabase() {
     const elementList = await getDatabaseDataElementList();
     for (let element of elementList) {
-        await db.collection("STOCK").add(element)
+        await db.collection("STOCKS").add(element)
     }
     console.log('DONE!')
 }
