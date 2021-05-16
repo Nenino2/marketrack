@@ -21,7 +21,7 @@ async function searchWithOptions() {
         await searchByKeyValueInArray(optionValue, textValue, {minPrice, maxPrice})
     }
 }
-searchButtonDom.addEventListener('click', () => {docLast = null;searchWithOptions()})
+searchButtonDom.addEventListener('click', () => {docLast = null;clearStockList();searchWithOptions()})
 
 nextButtonDom.addEventListener('click', async () => {
     if (!searchInputDom.value) {
@@ -65,7 +65,7 @@ async function load(filters = {}) {
         }
     }
     stocksSnapshots = await stocksSnapshots.limit(8).get()
-    clearStockList();
+
     stocksSnapshots.forEach((doc) => {
         const stock = doc.data()
         displayStock(doc, stock)
@@ -86,7 +86,7 @@ async function searchByKeyValue(key, value, filters = {}) {
     }
     stocksSnapshots = await stocksSnapshots.limit(8).get()
     
-    clearStockList();
+
     stocksSnapshots.forEach((doc) => {
         const stock = doc.data()
         displayStock(doc, stock)
@@ -106,7 +106,6 @@ async function searchByKeyValueInArray(key, value, filters) {
         }
     }
     stocksSnapshots = await stocksSnapshots.limit(8).get()
-    clearStockList();
     stocksSnapshots.forEach((doc) => {
         const stock = doc.data()
         displayStock(doc, stock)
