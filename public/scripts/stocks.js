@@ -78,10 +78,10 @@ async function searchByKeyValue(key, value, filters = {}) {
         stocksSnapshots = stocksSnapshots.startAfter(docLast)
     } else {
         if (filters.minPrice) {
-            stocksSnapshots = stocksSnapshots.startAt(filters.minPrice)
+            stocksSnapshots = stocksSnapshots.startAt(parseFloat(filters.minPrice))
         }
         if (filters.maxPrice) {
-            stocksSnapshots = stocksSnapshots.endAt(filters.maxPrice)
+            stocksSnapshots = stocksSnapshots.endAt(parseFloat(filters.maxPrice))
         }
     }
     stocksSnapshots = await stocksSnapshots.limit(8).get()
@@ -99,10 +99,10 @@ async function searchByKeyValueInArray(key, value, filters) {
         stocksSnapshots = stocksSnapshots.startAfter(docLast)
     } else {
         if (filters.minPrice) {
-            stocksSnapshots = stocksSnapshots.startAt(filters.minPrice)
+            stocksSnapshots = stocksSnapshots.startAt(parseFloat(filters.minPrice))
         }
         if (filters.maxPrice) {
-            stocksSnapshots = stocksSnapshots.endAt(filters.maxPrice)
+            stocksSnapshots = stocksSnapshots.endAt(parseFloat(filters.maxPrice))
         }
     }
     stocksSnapshots = await stocksSnapshots.limit(8).get()
