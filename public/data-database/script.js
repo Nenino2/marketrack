@@ -10,14 +10,19 @@ async function getDatabaseDataElementList () {
 
 async function deployToDatabase() {
     const elementList = await getDatabaseDataElementList();
+    const elementMap = new Map();
     for (let element of elementList) {
         Object.keys(element).forEach(key => {
             if (!isNaN(element[key])) {
                 element[key] = parseFloat(element[key])
+            } else if (key === 'name') {
+                element[key] = element[key].replace(/\(.*\)/, '').trim()
             }
         })
-        await db.collection("STOCKS").add(element)
-        console.log('element added')
+        elementMap.set(element['isin'], element)
     }
+    elementMap.forEach(async (element) => {
+        await db.collection("STOCKS").add(element)
+    })
     console.log('DONE!')
 }
