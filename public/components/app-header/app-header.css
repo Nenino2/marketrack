@@ -1,0 +1,13 @@
+header {
+    width: 100vw;
+    height: 50vh;
+    padding-top: 9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 3rem;
+	line-height: 1.35;
+    background-position: center;
+    background-size: cover;
+}

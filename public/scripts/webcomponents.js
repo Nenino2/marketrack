@@ -1,7 +1,8 @@
 function createWebComponent(componentName, fileName) {
     class CustomComponent extends HTMLElement {
         async connectedCallback() {
-            const data = (await (await fetch(fileName)).text());
+            let data = (await (await fetch(fileName)).text());
+            data = data.replace(/{{\s*SLOT\s*}}/, this.innerHTML)
             this.innerHTML = data;
         }
     }
@@ -10,3 +11,4 @@ function createWebComponent(componentName, fileName) {
 }
 
 createWebComponent('app-navbar', 'components/app-navbar/app-navbar.html')
+createWebComponent('app-header', 'components/app-header/app-header.html')

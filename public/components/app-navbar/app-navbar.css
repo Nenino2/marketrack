@@ -1,0 +1,49 @@
+.nav {
+    box-sizing: inherit;
+    display: flex;
+    align-items: center;
+    height: 9rem;
+    width: 100%;
+    padding: 5.5rem;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.349);
+    position: fixed;
+}
+
+.nav__logo {
+    padding: 0;
+    box-sizing: inherit;
+    height: 4.5rem;
+    transition: all 0.3s;
+}
+
+.nav__logowritten {
+    box-sizing: inherit;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    font-size: 3rem;
+}
+
+.nav__links {
+    box-sizing: inherit;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-left: auto;
+}
+
+.nav__item {
+    box-sizing: inherit;
+    margin-left: 5.5rem;
+}
+
+.nav__link {
+    box-sizing: inherit;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s;
+}
