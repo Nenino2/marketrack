@@ -1,25 +1,59 @@
-"use strict"
 import {selectorIbkr, selectorIbkrPage, stocksPageUrls} from './ibkr.js';
 import {scrapeHtmlDataFromUrl, downloadTextFile} from './utils.js'
 
 async function getStocksLinks(listPageUrls) {
-	const resultElements = [];
-	for (let url of listPageUrls) {
+	const resultElements = (await Promise.all(listPageUrls.map(async url => {
 		const data = await scrapeHtmlDataFromUrl(url, selectorIbkrPage, 9991, el => el && el.href ? el.href.match(/\'https\:\/\/contract\.ibkr\.info(.*?)\'/)[1] : null);
-		resultElements.push(data);
-	}
-	return resultElements.flat();
+		return data;
+	}))).flat();
+	return resultElements;
 }
 
 async function getStocks(urlsStocksIbkr) {
 	const resultElements = [];
-	for (let url of urlsStocksIbkr) {
-		let data = await scrapeHtmlDataFromUrl(url, selectorIbkr, 9990);
-		if (!data || !data.length) {
-			alert('CAPTHAAAAAAA');
-			data = await scrapeHtmlDataFromUrl(url, selectorIbkr, 9990);
+	console.log('LINK TOTALI: ',urlsStocksIbkr.length);
+	const groups = [];
+	const totalGroups = Math.floor((urlsStocksIbkr.length)/5);
+	console.log(totalGroups)
+	for (let i = 0; i < totalGroups; i++) {
+		groups.push([
+			urlsStocksIbkr[i * 5 + 0],
+			urlsStocksIbkr[i * 5 + 1],
+			urlsStocksIbkr[i * 5 + 2],
+			urlsStocksIbkr[i * 5 + 3],
+			urlsStocksIbkr[i * 5 + 4],
+			urlsStocksIbkr[i * 5 + 5],
+			urlsStocksIbkr[i * 5 + 6],
+			urlsStocksIbkr[i * 5 + 7],
+			urlsStocksIbkr[i * 5 + 8],
+			urlsStocksIbkr[i * 5 + 9],
+		])
+	}
+	console.log(groups);
+	for (let group of groups) {
+		console.log('invio 5 richieste...');
+		const redo = [];
+		(await Promise.all(group.map(async url => {
+			if (!url) return null;
+			let data = await scrapeHtmlDataFromUrl(url, selectorIbkr, 9990);
+			if (!data || !data.length) {
+				redo.push(url);
+			} else {
+				return data;
+			}
+		}))).filter(el => el).forEach(result => resultElements.push(result));
+		if (redo.length) {
+			alert('captha');
+			(await Promise.all(redo.map(async url => {
+				if (!url) return null;
+				let data = await scrapeHtmlDataFromUrl(url, selectorIbkr, 9990);
+				if (!data || !data.length) {
+					console.log('dati persi')
+				} else {
+					return data;
+				}
+			}))).filter(el => el).forEach(result => resultElements.push(result));
 		}
-		resultElements.push(data);
 	}
 	return resultElements;
 }
@@ -37,14 +71,15 @@ function parseStocks(stocks) {
 		const currencyArray=stock.find(element=>check(element,"Currency")) || [];
 		const isinArray=stock.find(element=>check(element,"ISIN")) || [];
 		const closingPriceArray=stock.find(element=>check(element,"Closing Price")) || [];
+
 		const currentStock = {
-			name:nameArray[1].trim(),
-			symbol: symbolArray[1].trim(),
-			market: exchangeArray[1].split(',').map(el => el.trim()),
-			country: countryArray[1].trim(),
-			currency: currencyArray[1].trim(),
-			isin: isinArray[1],
-			closingPrice: closingPriceArray[1]
+			name:nameArray[1] ? nameArray[1].trim() : '',
+			symbol: symbolArray[1] ?  symbolArray[1].trim() : '',
+			market: exchangeArray[1] ? exchangeArray[1].split(',').map(el => el ? el.trim() : '') : [],
+			country: countryArray[1] ? countryArray[1].trim() : '',
+			currency: currencyArray[1] ? currencyArray[1].trim() : '',
+			isin: isinArray[1] ? isinArray[1] : '',
+			closingPrice: closingPriceArray[1] ? closingPriceArray[1] : ''
 		};
 		parsedStocks.push(currentStock)
 	}
@@ -52,9 +87,14 @@ function parseStocks(stocks) {
 }
 
 async function getStocksFromStocksPageUrls(stocksPageUrls) {
-	const links = await getStocksLinks(stocksPageUrls);
-	const stocks = await getStocks(links/*.slice(0, 5)*/);
-	const parsedStocks = parseStocks(stocks)
+	let links, stocks, parsedStocks;
+	try {
+		links = await getStocksLinks(stocksPageUrls);
+		stocks = await getStocks(links.slice(0,1000));
+		parsedStocks = parseStocks(stocks)
+	} catch(error) {
+		console.log(error);
+	}
 	return parsedStocks;
 }
 
