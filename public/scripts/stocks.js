@@ -10,13 +10,9 @@ async function load() {
             <div class="list__element">
                 <div>${stock.name}</div>
                 <div>${stock.symbol}</div>
-                <div>${stock.market}</div>
-                <div>${stock.type}</div>
-                <div>${stock.country}</div>
+                <div>${stock.market.join(',')}</div>
                 <div>${stock.currency}</div>
                 <div>${stock.isin}</div>
-                <div>${stock.website}</div>
-                <div>${stock.hours}</div>
                 <div>${stock.closingPrice}</div>
                 </div>
             </a>

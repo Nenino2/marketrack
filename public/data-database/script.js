@@ -11,6 +11,11 @@ async function getDatabaseDataElementList () {
 async function deployToDatabase() {
     const elementList = await getDatabaseDataElementList();
     for (let element of elementList) {
+        Object.keys(element).forEach(key => {
+            if (!isNaN(element[key])) {
+                element[key] = parseFloat(element[key])
+            }
+        })
         await db.collection("STOCKS").add(element)
     }
     console.log('DONE!')
