@@ -47,7 +47,6 @@ async function searchByKeyValue(key, value) {
     const stocksSnapshots = await db.collection("STOCKS").where(key, "==", value).get();
     clearStockList();
     stocksSnapshots.forEach((doc) => {
-        console.log('o')
         const stock = doc.data()
         displayStock(doc, stock)
     })
