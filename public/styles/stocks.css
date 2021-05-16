@@ -2,9 +2,27 @@ header {
     background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(https://api.time.com/wp-content/uploads/2020/02/zoom-zm-stocks-coronavirus.jpg);
 }
 
-.searchbar {
+.searchbar-box {
     margin: 3rem 10rem;
+}
+
+.searchbar {
     display: flex;
+}
+
+.searchbar-options {
+    display: flex;
+}
+
+.form-control {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.searchbar-options label {
+    font-size: 1.3rem;
+    margin-left: 2px;
 }
 
 .searchbar input {

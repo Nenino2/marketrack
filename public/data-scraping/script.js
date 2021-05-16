@@ -38,11 +38,11 @@ function parseStocks(stocks) {
 		const isinArray=stock.find(element=>check(element,"ISIN")) || [];
 		const closingPriceArray=stock.find(element=>check(element,"Closing Price")) || [];
 		const currentStock = {
-			name:nameArray[1],
-			symbol: symbolArray[1],
-			market: exchangeArray[1].split(','),
-			country: countryArray[1],
-			currency: currencyArray[1],
+			name:nameArray[1].trim(),
+			symbol: symbolArray[1].trim(),
+			market: exchangeArray[1].split(',').map(el => el.trim()),
+			country: countryArray[1].trim(),
+			currency: currencyArray[1].trim(),
 			isin: isinArray[1],
 			closingPrice: closingPriceArray[1]
 		};

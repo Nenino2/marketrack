@@ -18,9 +18,25 @@
   <body>
     <app-navbar></app-navbar>
     <app-header>Stocks</app-header>
-    <div class="searchbar">
-      <input type="text" placeholder="Enter ISIN" id="search-input">
-      <button id="search-button">SEARCH</button>
+    <div class="searchbar-box">
+      <div class="searchbar">
+        <input type="text" placeholder="Enter Search" id="search-input">
+        <button id="search-button">SEARCH</button>
+      </div>
+      <div class="searchbar-options">
+        <div class="form-control">
+          <input type="radio" name="target" checked value="isin">
+          <label>ISIN</label>
+        </div>
+        <div class="form-control">
+          <input type="radio" name="target" value="name">
+          <label>NAME</label>
+        </div>
+        <div class="form-control">
+          <input type="radio" name="target" value="market">
+          <label>MARKET</label>
+        </div>
+      </div>
     </div>
     <div class="list" id="stock-list">
     </div>
