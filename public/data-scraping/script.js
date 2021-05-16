@@ -33,23 +33,17 @@ function parseStocks(stocks) {
 		const nameArray=stock.find(element=>check(element,"Description/Name")) || [];
 		const symbolArray=stock.find(element=>check(element,"Symbol")) || [];
 		const exchangeArray=stock.find(element=>check(element ,"Exchange")) || [];
-		const typeArray=stock.find(element=>check(element,"Contract Type")) || [];
 		const countryArray=stock.find(element=>check(element,"Country/Region")) || [];
 		const currencyArray=stock.find(element=>check(element,"Currency")) || [];
 		const isinArray=stock.find(element=>check(element,"ISIN")) || [];
-		const websiteArray=stock.find(element=>check(element,"Exchange Website")) || [];
-		const hoursArray=stock.find(element=>check(element,"Liquid Trading Hours")) || [];
 		const closingPriceArray=stock.find(element=>check(element,"Closing Price")) || [];
 		const currentStock = {
 			name:nameArray[1],
 			symbol: symbolArray[1],
-			market: exchangeArray[1],
-			type: typeArray[1],
+			market: exchangeArray[1].split(','),
 			country: countryArray[1],
 			currency: currencyArray[1],
 			isin: isinArray[1],
-			website: websiteArray[1],
-			hours: hoursArray[1],
 			closingPrice: closingPriceArray[1]
 		};
 		parsedStocks.push(currentStock)
