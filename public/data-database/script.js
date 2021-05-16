@@ -17,6 +17,7 @@ async function deployToDatabase() {
             }
         })
         await db.collection("STOCKS").add(element)
+        console.log('element added')
     }
     console.log('DONE!')
 }

@@ -35,7 +35,7 @@ function displayStock(doc, stock) {
 }
 
 async function load() {
-    const stocksSnapshots = await db.collection("STOCKS").get();
+    const stocksSnapshots = await db.collection("STOCKS").limit(3).get();
     clearStockList();
     stocksSnapshots.forEach((doc) => {
         const stock = doc.data()
@@ -44,7 +44,7 @@ async function load() {
 }
 
 async function searchByKeyValue(key, value) {
-    const stocksSnapshots = await db.collection("STOCKS").where(key, "==", value).get();
+    const stocksSnapshots = await db.collection("STOCKS").where(key, "==", value).limit(3).get();
     clearStockList();
     stocksSnapshots.forEach((doc) => {
         const stock = doc.data()
@@ -53,7 +53,7 @@ async function searchByKeyValue(key, value) {
 }
 
 async function searchByKeyValueInArray(key, value) {
-    const stocksSnapshots = await db.collection("STOCKS").where(key, 'array-contains', value).get();
+    const stocksSnapshots = await db.collection("STOCKS").where(key, 'array-contains', value).limit(3).get();
     clearStockList();
     stocksSnapshots.forEach((doc) => {
         console.log('o')
