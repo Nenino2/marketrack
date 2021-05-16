@@ -3,7 +3,7 @@ header {
 }
 
 .list {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     margin: 3rem 10rem;
 }
 
@@ -11,8 +11,11 @@ header {
     box-shadow: 0 10px 20px 0 rgb(0 0 0 / 5%);
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    align-items: center;
+    justify-items: center;
     padding: 3rem;
     margin: 1rem 0;
+    gap: 10px;
 }
 
 a {
