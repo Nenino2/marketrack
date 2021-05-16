@@ -43,7 +43,7 @@ function parseStocks(stocks) {
 		const currentStock = {
 			name:nameArray[1],
 			symbol: symbolArray[1],
-			exchange: exchangeArray[1],
+			market: exchangeArray[1],
 			type: typeArray[1],
 			country: countryArray[1],
 			currency: currencyArray[1],
