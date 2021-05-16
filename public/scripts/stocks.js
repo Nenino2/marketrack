@@ -2,8 +2,12 @@ const db = firebase.firestore();
 const stockListDom = document.getElementById('stock-list')
 const searchButtonDom = document.getElementById('search-button')
 const searchInputDom = document.getElementById('search-input')
+const nextButtonDom = document.getElementById('next-button')
 
-searchButtonDom.addEventListener('click', async () => {
+let docLast = null;
+
+async function searchWithOptions() {
+    docLast = null;
     const textValue = searchInputDom.value;
     const optionValue = document.querySelector('input[name="target"]:checked').value;
     if (!textValue || !optionValue) return load()
@@ -12,6 +16,15 @@ searchButtonDom.addEventListener('click', async () => {
         await searchByKeyValue(optionValue, textValue)
     } else if (optionValue === 'market') {
         await searchByKeyValueInArray(optionValue, textValue)
+    }
+}
+searchButtonDom.addEventListener('click', searchWithOptions)
+
+nextButtonDom.addEventListener('click', async () => {
+    if (!searchInputDom.value) {
+        await load()
+    } else {
+        await searchWithOptions();
     }
 })
 
@@ -32,10 +45,16 @@ function displayStock(doc, stock) {
                 </div>
             </a>
     `)
+    docLast = doc;
 }
 
 async function load() {
-    const stocksSnapshots = await db.collection("STOCKS").limit(3).get();
+    let stocksSnapshots;
+    if (!docLast) {
+        stocksSnapshots = await db.collection("STOCKS").limit(8).get();
+    } else {
+        stocksSnapshots = await db.collection("STOCKS").startAfter(docLast).limit(8).get();
+    }
     clearStockList();
     stocksSnapshots.forEach((doc) => {
         const stock = doc.data()
@@ -44,7 +63,13 @@ async function load() {
 }
 
 async function searchByKeyValue(key, value) {
-    const stocksSnapshots = await db.collection("STOCKS").where(key, "==", value).limit(3).get();
+    let stocksSnapshots;
+    if (!docLast) {
+        stocksSnapshots = await db.collection("STOCKS").where(key, "==", value).limit(8).get();
+    } else {
+        stocksSnapshots = await db.collection("STOCKS").where(key, "==", value).startAfter(docLast).limit(8).get();
+    }
+    
     clearStockList();
     stocksSnapshots.forEach((doc) => {
         const stock = doc.data()
@@ -53,10 +78,14 @@ async function searchByKeyValue(key, value) {
 }
 
 async function searchByKeyValueInArray(key, value) {
-    const stocksSnapshots = await db.collection("STOCKS").where(key, 'array-contains', value).limit(3).get();
+    let stocksSnapshots;
+    if (!docLast) {
+        stocksSnapshots = await db.collection("STOCKS").where(key, "array-contains", value).limit(8).get();
+    } else {
+        stocksSnapshots = await db.collection("STOCKS").where(key, "array-contains", value).startAfter(docLast).limit(8).get();
+    }
     clearStockList();
     stocksSnapshots.forEach((doc) => {
-        console.log('o')
         const stock = doc.data()
         displayStock(doc, stock)
     })
