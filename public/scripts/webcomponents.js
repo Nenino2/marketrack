@@ -10,5 +10,5 @@ function createWebComponent(componentName, fileName) {
     customElements.define(componentName, CustomComponent);
 }
 
-createWebComponent('app-navbar', 'components/app-navbar/app-navbar.html')
-createWebComponent('app-header', 'components/app-header/app-header.html')
+createWebComponent('app-navbar', '/components/app-navbar/app-navbar.html')
+createWebComponent('app-header', '/components/app-header/app-header.html')

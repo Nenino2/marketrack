@@ -59,8 +59,7 @@ function parseStocks(stocks) {
 
 async function getStocksFromStocksPageUrls(stocksPageUrls) {
 	const links = await getStocksLinks(stocksPageUrls);
-	console.log(links)
-	const stocks = await getStocks(links);
+	const stocks = await getStocks(links.slice(0, 5));
 	const parsedStocks = parseStocks(stocks)
 	return parsedStocks;
 }
