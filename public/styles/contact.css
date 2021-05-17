@@ -10,7 +10,11 @@ header {
 body {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
-    color: #f3f3f3;
     line-height: 1.9;
     background-color: #f3f3f3;
+}
+
+.container {
+    font-size: 1.8rem;
+    margin: 10rem 10rem;
 }
