@@ -185,12 +185,12 @@
   }
   
   .operations__tab--3 {
-	  background-color: var(--color-tertiary);
+	  background: var(--gradient-primary);
 	  margin: 0;
   }
   
   .operations__tab--3:hover {
-	  background-color: var(--color-tertiary-darker);
+	  background: var(--gradient-primary);
   }
   
   .operations__tab--active {
