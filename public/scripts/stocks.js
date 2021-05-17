@@ -41,7 +41,6 @@ function displayStock(doc, stock) {
             <div class="list__element">
                 <div>${stock.name}</div>
                 <div>${stock.symbol}</div>
-                <div>${stock.market.join(',')}</div>
                 <div>${stock.currency}</div>
                 <div>${stock.isin}</div>
                 <div>${stock.closingPrice}</div>
