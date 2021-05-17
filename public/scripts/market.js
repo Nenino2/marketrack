@@ -23,6 +23,7 @@ async function load() {
                             <div class="row">
                                 <div class="col-header">HOURS-${key.toUpperCase()}</div>
                                 <div class="col-content">${market['Hours'][key]}</div>
+                                
                             </div>
                             `
                     }).join('')

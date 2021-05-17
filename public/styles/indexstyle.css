@@ -1,13 +1,13 @@
 :root {
 	--color-primary: #139fe0;
 	--color-secondary: #ffcb03;
-	--color-tertiary: #ff585f;
+	--color-tertiary: #8eee4e;
 	--color-primary-darker: #3386d4;
 	--color-secondary-darker: #daa000;
-	--color-tertiary-darker: #bb2b33;
+	--color-tertiary-darker: #0e720b;
 	--color-primary-opacity: #5ea8c53a;
 	--color-secondary-opacity: #ffcd0331;
-	--color-tertiary-opacity: #ff58602d;
+	--color-tertiary-opacity: #79ff582d;
 	--gradient-primary: linear-gradient(to top left, #39b385, #9be15d);
 	--gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
   }
@@ -526,3 +526,8 @@
 	  transform: translateY(-6rem);
   }
   
+	.about {
+		font-size: 2rem;
+	  font-weight: 50;
+		margin-top: 2rem;
+	}
