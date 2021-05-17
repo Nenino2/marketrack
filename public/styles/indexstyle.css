@@ -1,18 +1,4 @@
-:root {
-	--color-primary: #139fe0;
-	--color-secondary: #ffcb03;
-	--color-tertiary: #8eee4e;
-	--color-primary-darker: #3386d4;
-	--color-secondary-darker: #daa000;
-	--color-tertiary-darker: #0e720b;
-	--color-primary-opacity: #5ea8c53a;
-	--color-secondary-opacity: #ffcd0331;
-	--color-tertiary-opacity: #79ff582d;
-	--gradient-primary: linear-gradient(to top left, #39b385, #9be15d);
-	--gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
-  }
-  
-  * {
+ * {
 	  margin: 0;
 	  padding: 0;
 	  box-sizing: inherit;
@@ -185,12 +171,12 @@
   }
   
   .operations__tab--3 {
-	  background: var(--gradient-primary);
+	  background-color: var(--color-tertiary);
 	  margin: 0;
   }
   
   .operations__tab--3:hover {
-	  background: var(--gradient-primary);
+	  background-color: var(--color-tertiary-darker);
   }
   
   .operations__tab--active {
